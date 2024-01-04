@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import bgimage from '../images/bgimage.jpg'
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
@@ -12,12 +13,6 @@ function Login() {
             const response = await axios.post('http://localhost:3000/login', { username, password });
 
             if (response.data.msg === 'Login successful') {
-                // Assuming your server sends a token upon successful login
-                const token = response.data.token;
-
-                // Save the token to local storage or a secure storage mechanism
-                localStorage.setItem('token', token);
-
                 // Redirect to the protected route after successful login
                 navigate('/admin');
             } else {
@@ -29,6 +24,12 @@ function Login() {
     };
 
     return (
+        <>
+        <header className="bg-cover bg-left h-32 flex items-center justify-center bg-gray-200" style={{ backgroundImage: `url(${bgimage})` }}>
+                <div className="mr-4">
+                    <h1 className="text-2xl text-center font-bold text-white">NCMF GSD INVENTORY</h1>
+                </div>
+            </header>
         <section>
             <form onSubmit={(e) => {
                 e.preventDefault();
@@ -57,6 +58,7 @@ function Login() {
                 <button onClick={handleLogin} type="submit" className="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50">Login</button>
             </form>
         </section>
+        </>
     )
 }
 

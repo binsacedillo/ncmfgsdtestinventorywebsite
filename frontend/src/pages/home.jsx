@@ -56,7 +56,7 @@ function Home() {
                     <div className="m-1.5 flex justify-between items-center">
                         <p className="p-2 font-medium text-xl text-center">INVENTORY LIST</p>
                         <div className="flex">
-                            <Link to={'/login'} className="p-2 font-semibold bg-lime-900 text-white rounded text-lg text-center mr-2">CREATE +</Link>
+                            <Link to={'/create'} className="p-2 font-semibold bg-lime-900 text-white rounded text-lg text-center mr-2">CREATE +</Link>
                             <button className="text-xs p-2 font-semibold bg-lime-900 text-white rounded text-center mr-2" onClick={truncateTable}>Reset Table ID</button>
                         </div>
                     </div>

@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import Home from "../pages/home";
 
 const useAuth = () => {
-    const user = { loggedIn: true };
+    const user = {loggedIn: false}
     return user && user.loggedIn;
 } 
 

@@ -1,9 +1,5 @@
 import { createRoot } from "react-dom/client";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import ProtectedRoute from "./components/protectedroutes";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Read from "./pages/read";
 import Home from "./pages/home";
 import Update from "./pages/update";
@@ -19,11 +15,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/read/:id",
-    element: <Read />,
+    element: <Read />
   },
   {
     path: "/edit/:id",
-    element: <ProtectedRoute element={<Update />} />,
+    element: <Update />,
   },
   {
     path: "/create",
@@ -31,12 +27,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <Login />,
+    element: <Login />
   },
   {
     path: "/",
-    element: <Visitor />,
-  },
+    element: <Visitor />
+  }
 ]);
 
 createRoot(document.getElementById("root")).render(
