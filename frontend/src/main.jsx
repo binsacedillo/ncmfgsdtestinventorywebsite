@@ -6,12 +6,13 @@ import Update from "./pages/update";
 import Login from "./pages/login";
 import Create from "./pages/create";
 import Visitor from "./pages/visitorhomepage";
+import ProtectedRoute from "./components/protectedroutes";
 import './index.css';
 
 const router = createBrowserRouter([
   {
     path: "/admin",
-    element: <Home />,
+    element: <ProtectedRoute><Home /></ProtectedRoute>,
   },
   {
     path: "/read/:id",

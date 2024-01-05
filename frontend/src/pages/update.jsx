@@ -83,7 +83,7 @@ function Update() {
                     </div>
                     <div className="flex flex-col w-full max-w-md">
                         <label className="text-sm font-medium" htmlFor="datetime">
-                            Quantity
+                            Date and Time
                         </label>
                         <input
                             className="border border-gray-300 rounded-md px-4 py-2"
@@ -102,6 +102,12 @@ function Update() {
                     </button>
                 </form>
             </div>
+            <footer className="text-black p-4 mt-12 text-center">
+                <div className="border-t-2 border-green-400"></div>
+                <p className="text-sm">
+                    &copy; {new Date().getFullYear()} NATIONAL COMMISSION ON MUSLIM FILIPINOS | GENERAL SERVICES DIVISION
+                </p>
+            </footer>
         </main>
     );
 }

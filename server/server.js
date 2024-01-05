@@ -3,6 +3,7 @@ import mysql from "mysql"
 import cors from "cors"
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 
@@ -12,40 +13,6 @@ const db = mysql.createConnection({
     password: "",
     database: "ncmfgsdinventory"
 })
-
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'userdb'
-});
-
-connection.connect();
-
-app.get('/users', (req, res) => {
-    connection.query('SELECT * FROM Users', (error, results) => {
-        if (error) throw error;
-        res.send(results);
-    });
-});
-
-app.post('/login', (req, res) => {
-
-    const { username, password } = req.body;
-
-    connection.query(
-        'SELECT * FROM Users WHERE username = ? AND password = ?',
-        [username, password],
-        (error, results) => {
-            if (error) throw error;
-            if (results.length > 0) {
-                res.json({ msg: 'Login successful' });
-            } else {
-                res.json({ msg: 'Invalid credentials' });
-            }
-        }
-    );
-});
 
 app.get('/', (req, res) => {
     const sql = "SELECT * FROM datas";
@@ -105,7 +72,3 @@ app.delete('/delete/:id', (req, res) => {
 app.listen(8081, () => {
     console.log("getting datas");
 })
-
-app.listen(3000, () => {
-    console.log('getting users');
-});

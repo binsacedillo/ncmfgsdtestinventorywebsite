@@ -1,15 +1,19 @@
-import { Outlet } from "react-router-dom";
-import Home from "../pages/home";
+import PropTypes from 'prop-types';
+import { Navigate } from 'react-router-dom';
 
-const useAuth = () => {
-    const user = {loggedIn: false}
-    return user && user.loggedIn;
-} 
+function ProtectedRoute({ children }) {
+  // Check if there is a saved token in session storage
+  const token = sessionStorage.getItem('token');
 
-const ProtectedRoutes = () => {
-    const isAuth = useAuth();
+  if (!token) {
+    return <Navigate to="/login" />;
+  }
 
-  return isAuth ? <Outlet/> : <Home />;
+  return children;
 }
 
-export default ProtectedRoutes
+ProtectedRoute.propTypes = {
+  children: PropTypes.element.isRequired
+};
+
+export default ProtectedRoute;
