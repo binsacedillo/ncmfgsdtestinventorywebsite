@@ -4,8 +4,6 @@ import axios from 'axios'
 import { Link } from 'react-router-dom';
 
 function Create() {
-    const REACT_APP_BACKEND_URL = 'https://ncmfgsdtestinventorywebsite-production.up.railway.app'; 
-
     useEffect(() => {
         const handleContextmenu = e => {
             e.preventDefault();
@@ -42,7 +40,7 @@ function Create() {
             return;
         }
 
-        axios.post(`${REACT_APP_BACKEND_URL}/datas`, values)
+        axios.post('http://localhost:8081/datas', values)
             .then(() => {
                 alert('Form submitted successfully!');
                 window.location.reload();

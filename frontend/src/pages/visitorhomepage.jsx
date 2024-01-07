@@ -4,7 +4,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 function Visitor() {
-    const REACT_APP_BACKEND_URL = 'https://ncmfgsdtestinventorywebsite-production.up.railway.app'; 
 
     // Disable context menu on right-click
     useEffect(() => {
@@ -24,7 +23,7 @@ function Visitor() {
 
     // Fetch data from the server on component mount
     useEffect(() => {
-        axios.get(`${REACT_APP_BACKEND_URL}`)
+        axios.get('http://localhost:8081/')
             .then(res => setData(res.data))
             .catch(err => console.error(err));
     }, []);

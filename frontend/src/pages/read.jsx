@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
 function Read() {
-  const REACT_APP_BACKEND_URL = 'https://ncmfgsdtestinventorywebsite-production.up.railway.app'; 
-
   useEffect(() => {
     const handleContextmenu = e => {
       e.preventDefault();
@@ -21,7 +19,7 @@ function Read() {
   const [datas, setDatas] = useState([]);
 
   useEffect(() => {
-    axios.get(`${REACT_APP_BACKEND_URL}/read/` + id)
+    axios.get("http://localhost:8081/read/" + id)
       .then((res) => {
         setDatas(res.data);
       })
