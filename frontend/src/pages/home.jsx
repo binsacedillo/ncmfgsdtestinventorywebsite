@@ -4,10 +4,11 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 function Home() {
+    const REACT_APP_BACKEND_URL = 'https://ncmfgsdtestinventorywebsite-production.up.railway.app'; 
 
     const truncateTable = async () => {
         try {
-            const response = await axios.post('http://localhost:8081/');
+            const response = await axios.post(`${REACT_APP_BACKEND_URL}`);
             alert(response.data);
         } catch (error) {
             console.error(error);
@@ -28,13 +29,13 @@ function Home() {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:8081/')
+        axios.get(`${REACT_APP_BACKEND_URL}`)
             .then(res => setData(res.data))
             .catch(err => console.error(err));
     }, [])
 
     const deleteData = (id) => {
-        axios.delete(`http://localhost:8081/delete/` + id)
+        axios.delete(`${REACT_APP_BACKEND_URL}/delete/` + id)
             .then(function (response) {
                 console.log(response.data);
                 window.location.reload();  // Reload the page

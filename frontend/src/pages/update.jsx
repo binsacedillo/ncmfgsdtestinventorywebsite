@@ -4,6 +4,8 @@ import bgimage from '../images/bgimage.jpg'
 import { useNavigate, useParams } from 'react-router-dom';
 
 function Update() {
+    const REACT_APP_BACKEND_URL = 'https://ncmfgsdtestinventorywebsite-production.up.railway.app'; 
+
     const {id} = useParams();
     const navigate = useNavigate();
 
@@ -16,7 +18,7 @@ function Update() {
     });
 
     useEffect(() => {
-        axios.get('http://localhost:8081/read/'+id)
+        axios.get(`${REACT_APP_BACKEND_URL}/read/`+id)
             .then((res) => {
                 setDatas({ ...datas, name: res.data[0].name, unit: res.data[0].unit, quantity: res.data[0].quantity, datetime: res.data[0].datetime, supplier: res.data[0].supplier })
             })
@@ -25,7 +27,7 @@ function Update() {
 
     const handleUpdate = (event) => {
         event.preventDefault();
-        axios.put('http://localhost:8081/update/'+id, datas)
+        axios.put(`${REACT_APP_BACKEND_URL}`+id, datas)
         .then(res => {
             console.log(res)
             navigate('/admin')
