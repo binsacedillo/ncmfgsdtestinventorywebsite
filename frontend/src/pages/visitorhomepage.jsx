@@ -46,7 +46,7 @@ function Visitor() {
 
                         {/* Create Button */}
                         <div className="flex">
-                            <Link to={'/login'} className="p-2 font-semibold bg-lime-900 text-white rounded text-lg text-center mr-2">CREATE +</Link>
+                            <Link to={'/login'} className="p-2 font-semibold bg-lime-900 text-white rounded text-lg text-center mr-2">LOGIN</Link>
                         </div>
                     </div>
 

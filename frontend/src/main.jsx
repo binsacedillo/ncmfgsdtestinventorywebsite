@@ -20,11 +20,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/edit/:id",
-    element: <Update />,
+    element: <ProtectedRoute><Update /></ProtectedRoute>,
   },
   {
     path: "/create",
-    element: <Create />,
+    element: <ProtectedRoute><Create /></ProtectedRoute>,
   },
   {
     path: "/login",
