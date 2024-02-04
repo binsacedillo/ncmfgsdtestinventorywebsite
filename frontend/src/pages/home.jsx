@@ -25,12 +25,12 @@ function Home() {
         }
     }, []);
 
-    const [data, setData] = useState([])
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         axios.get('http://localhost:8081/')
             .then(res => setData(res.data))
-            .catch(err => console.error(err));
+            .catch(err => console.error(err))
     }, [])
 
     const deleteData = (id) => {

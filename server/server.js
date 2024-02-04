@@ -69,11 +69,11 @@ app.get('/read/:id', (req, res) => {
 // Handle PUT request to update a specific entry in the 'datas' table
 app.put('/update/:id', (req, res) => {
     // SQL query to update a specific entry based on the provided ID
-    const sql = 'UPDATE datas SET `Name` =?, `Unit` =?, `Quantity` =? , `datetime` =? , `supplier` =? WHERE ID=? ';
+    const sql = 'UPDATE datas SET `Name` =?, `Unit` =?, `Quantity` =? , `datetime` =?';
     // Extract ID from the request parameters
     const id = req.params.id;
     // Execute the query with the provided values and ID, and handle the result or error
-    db.query(sql, [req.body.name, req.body.unit, req.body.quantity, req.body.datetime, req.body.supplier, id], (err, result) => {
+    db.query(sql, [req.body.name, req.body.unit, req.body.quantity, req.body.datetime ], (err, result) => {
         // If there's an error, send an error response; otherwise, send the result as JSON
         if (err) return res.json({ Message: "Error inside server" });
         return res.json(result);

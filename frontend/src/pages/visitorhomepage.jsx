@@ -25,7 +25,7 @@ function Visitor() {
     useEffect(() => {
         axios.get('http://localhost:8081/')
             .then(res => setData(res.data))
-            .catch(err => console.error(err));
+            .catch(err => console.error(err))   
     }, []);
 
     return (

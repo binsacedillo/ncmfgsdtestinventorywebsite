@@ -4,7 +4,6 @@ import bgimage from '../images/bgimage.jpg'
 import { useNavigate, useParams } from 'react-router-dom';
 
 function Update() {
-    const REACT_APP_BACKEND_URL = 'https://ncmfgsdtestinventorywebsite-production.up.railway.app'; 
 
     const {id} = useParams();
     const navigate = useNavigate();
@@ -14,20 +13,19 @@ function Update() {
         unit: '',
         quantity: '',
         datetime: '',
-        supplier: '',
     });
 
     useEffect(() => {
-        axios.get(`${REACT_APP_BACKEND_URL}/read/`+id)
+        axios.get("http://localhost:8081/read/"+id)
             .then((res) => {
-                setDatas({ ...datas, name: res.data[0].name, unit: res.data[0].unit, quantity: res.data[0].quantity, datetime: res.data[0].datetime, supplier: res.data[0].supplier })
+                setDatas({ ...datas, name: res.data[0].name, unit: res.data[0].unit, quantity: res.data[0].quantity, datetime: res.data[0].datetime })
             })
             .catch((err) => console.log(err));
     }, []);
 
     const handleUpdate = (event) => {
         event.preventDefault();
-        axios.put(`${REACT_APP_BACKEND_URL}`+id, datas)
+        axios.put("http://localhost:8081/update/"+id, datas)
         .then(res => {
             console.log(res)
             navigate('/admin')
@@ -94,19 +92,6 @@ function Update() {
                             placeholder="Enter date and time"
                             value={datas.datetime}
                             onChange={(e) => setDatas({ ...datas, datetime: e.target.value })}
-                        />
-                    </div>
-                    <div className="flex flex-col w-full max-w-md">
-                        <label className="text-sm font-medium" htmlFor="supplier">
-                            Supplier
-                        </label>
-                        <input
-                            className="border border-gray-300 rounded-md px-4 py-2"
-                            type="text"
-                            id="supplier"
-                            placeholder="Enter supplier"
-                            value={datas.supplier}
-                            onChange={(e) => setDatas({ ...datas, supplier: e.target.value })}
                         />
                     </div>
                     <button
